@@ -1,43 +1,154 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
-
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { Tabs } from "expo-router";
+import { View, Text } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
+      initialRouteName="aIPriest"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: "#FCFCFC",
+          height: 70,
+          shadowColor: "transparent",
+          elevation: 0,
+          borderTopWidth: 0,
+        },
+        tabBarIconStyle: {
+          marginVertical: "auto",
+        },
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center justify-center w-12">
+              <Icon name="home-outline" size={24} color="#6B675E" />
+              <View
+                style={
+                  focused && {
+                    borderBottomWidth: 3,
+                    borderBottomColor: "#6F6097",
+                    paddingBottom: 3,
+                  }
+                }
+              >
+                <Text
+                  className="text-[10px]"
+                  style={focused && { color: "#6F6097" }}
+                >
+                  Home
+                </Text>
+              </View>
+            </View>
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="aIPriest"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center justify-center w-12">
+              <Icon name="color-wand-outline" size={24} color="#6B675E" />
+              <View
+                style={
+                  focused && {
+                    borderBottomWidth: 3,
+                    borderBottomColor: "#6F6097",
+                    paddingBottom: 3,
+                  }
+                }
+              >
+                <Text
+                  className="text-[10px]"
+                  style={focused && { color: "#6F6097" }}
+                >
+                  AI Priest
+                </Text>
+              </View>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="abilities"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center justify-center w-12">
+              <Icon name="heart-circle-outline" size={24} color="#6B675E" />
+              <View
+                style={
+                  focused && {
+                    borderBottomWidth: 3,
+                    borderBottomColor: "#6F6097",
+                    paddingBottom: 3,
+                  }
+                }
+              >
+                <Text
+                  className="text-[10px]"
+                  style={focused && { color: "#6F6097" }}
+                >
+                  Abilities
+                </Text>
+              </View>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="bible"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center justify-center w-12">
+              <Icon name="book-outline" size={24} color="#6B675E" />
+              <View
+                style={
+                  focused && {
+                    borderBottomWidth: 3,
+                    borderBottomColor: "#6F6097",
+                    paddingBottom: 3,
+                  }
+                }
+              >
+                <Text
+                  className="text-[10px]"
+                  style={focused && { color: "#6F6097" }}
+                >
+                  Bible
+                </Text>
+              </View>
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="journal"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center justify-center w-12">
+              <Icon name="journal-outline" size={24} color="#6B675E" />
+              <View
+                style={
+                  focused && {
+                    borderBottomWidth: 3,
+                    borderBottomColor: "#6F6097",
+                    paddingBottom: 3,
+                  }
+                }
+              >
+                <Text
+                  className="text-[10px] font-medium"
+                  style={focused && { color: "#6F6097" }}
+                >
+                  Journal
+                </Text>
+              </View>
+            </View>
+          ),
         }}
       />
     </Tabs>
